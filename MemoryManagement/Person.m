@@ -12,24 +12,27 @@
 
 @implementation Person
 
-- (instancetype)initWithCar:(Car *)car {
-	self = [super init];
-	if (self) {
-		NSLog(@"Person.init: %@", _car);
+- (instancetype)initWithCar:(Car *)car
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"-[Person init]: %@", _car);
         // TODO: Implement initWithCar with MRC
         _car = car;
-	}
-	return self;
+    }
+    return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     // TODO: Implement dealloc with MRC (order is important)
 
-    NSLog(@"Person.dealloc: %@", _car);
+    NSLog(@"-[Person dealloc]: %@", _car);
 }
 
 // TODO: Implement setCar with MRC
-- (void)setCar:(Car *)car {
+- (void)setCar:(Car *)car
+{
     _car = car;
 }
 

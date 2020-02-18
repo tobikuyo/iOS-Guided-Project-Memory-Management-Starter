@@ -11,24 +11,27 @@
 
 @implementation Car
 
-- (instancetype)initWithMake:(NSString *)make {
-	self = [super init];
-	if (self) {
-        NSLog(@"Car.init: %@", make);
+- (instancetype)initWithMake:(NSString *)make
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"-[Car init]: %@", make);
         _make = [make copy];
-	}
-	return self;
+    }
+    return self;
 }
 
 // TODO: Implement autoreleased class car method
 
 
-- (void)dealloc {
-    NSLog(@"Car.dealloc: %@", self);
+- (void)dealloc
+{
+    NSLog(@"-[Car dealloc]: %@", self);
     // TODO: Implement dealloc with MRC
 }
 
-- (NSString *)description {
+- (NSString *)description
+{
     return self.make;
 }
 
