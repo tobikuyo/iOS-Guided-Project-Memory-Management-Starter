@@ -32,7 +32,9 @@
 
 - (NSString *)description
 {
-    return self.make;
+    // TODO: Implement a standard autoreleasing method.
+    NSString *description = [[NSString alloc] initWithFormat:@"Car: %@", self.make];
+    return description;
 }
 
 @end
