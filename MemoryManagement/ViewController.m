@@ -63,13 +63,17 @@
 
     // Using colors after setting it to nil is a no-op and will be predictable ... without it ... anything can happen
 
-    Car *bmw = [[[Car alloc] initWithMake:@"i8"] autorelease]; // bmw: 1
-    Person *person = [[Person alloc] initWithCar:bmw]; // person: 1
+    Car *bmw = [[Car alloc] initWithMake:@"i8"]; // bmw: 1
+    Person *person = [[Person alloc] initWithCar:bmw]; // person: 1, bmw: 2
+    [bmw release]; // bmw: 1
 
-    person.car = [[[Car alloc] initWithMake:@"4 series"] autorelease]; // 2 = 1 + 1
+    person.car = bmw;
 
-    [person release];
-    person = nil;
+    Car *mercedes = [[Car alloc] initWithMake:@"4 series"]; // 1
+    person.car = mercedes; // 2
+    [mercedes release]; // 1
+
+    person.car = mercedes; // 3
 }
 
 @end
