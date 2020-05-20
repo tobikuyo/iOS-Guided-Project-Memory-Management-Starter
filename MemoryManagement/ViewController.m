@@ -55,10 +55,21 @@
     [colors addObject:favoriteColor]; // favoriteColor: 2 (addObject + 1)
     [favoriteColor release]; // transferring object ownership to the array
 
+    NSString *color2 = [[[NSString alloc] initWithString:@"Red"] autorelease];
+    [colors addObject:color2];
+
     [colors release]; // colors: 0 -> automatic cleanup of memory (other variable can now use this space)
     colors = nil; // Prevents bugs with using invalid memory (Protecting my future self from making a mistake)
 
     // Using colors after setting it to nil is a no-op and will be predictable ... without it ... anything can happen
+
+    Car *bmw = [[[Car alloc] initWithMake:@"i8"] autorelease]; // bmw: 1
+    Person *person = [[Person alloc] initWithCar:bmw]; // person: 1
+
+    person.car = [[[Car alloc] initWithMake:@"4 series"] autorelease]; // 2 = 1 + 1
+
+    [person release];
+    person = nil;
 }
 
 @end
